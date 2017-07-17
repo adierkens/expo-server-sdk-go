@@ -26,6 +26,10 @@ Also checkout the example file [here](./example/main.go)
 
 # TODO
 - Add tests
+- Add rest of API support 
+  - `sendPushNotifications`
+  - `chunkPushNotifications`
+  - `isExpoPushToken`
 
 # See Also
 - [exponent-server-sdk-node](https://github.com/expo/exponent-server-sdk-node)
