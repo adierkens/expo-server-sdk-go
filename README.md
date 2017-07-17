@@ -24,14 +24,14 @@ func main() {
 
 Also checkout the example file [here](./example/main.go)
 
-# TODO
+## TODO
 - Add tests
 - Add rest of API support 
   - `sendPushNotifications`
   - `chunkPushNotifications`
   - `isExpoPushToken`
 
-# See Also
+## See Also
 - [exponent-server-sdk-node](https://github.com/expo/exponent-server-sdk-node)
 - [exponent-server-sdk-python](https://github.com/exponent/exponent-server-sdk-python)
 - [exponent-server-sdk-ruby](https://github.com/exponent/exponent-server-sdk-ruby)
