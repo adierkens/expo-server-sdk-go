@@ -1,4 +1,4 @@
-# expo-server-sdk-go
+# expo-server-sdk-go [![Build Status](https://travis-ci.org/adierkens/expo-server-sdk-go.svg?branch=master)](https://travis-ci.org/adierkens/expo-server-sdk-go)
 Server side library for working with Expo using Go
 
 ## Usage
