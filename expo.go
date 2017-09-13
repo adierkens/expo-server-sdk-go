@@ -42,7 +42,7 @@ type ExpoPushResponse struct {
 }
 
 func IsExpoPushToken(token string) bool {
-	return strings.HasPrefix(token, "ExponentPushToken[") && strings.HasSuffix(token, "]")
+	return (strings.HasPrefix(token, "ExponentPushToken[") || strings.HasPrefix(token, "ExpoPushToken[")) && strings.HasSuffix(token, "]")
 }
 
 const DEFAULT_HOST = "https://exp.host"
@@ -51,6 +51,8 @@ const DEFAULT_API_URL = DEFAULT_HOST + "/--/api/v2"
 const DEFAULT_PRIORITY = "default"
 const HIGH_PRIORITY = "high"
 const NORMAL_PRIORITY = "normal"
+
+const PUSH_NOTIFICATION_CHUNK_LIMIT = 100
 
 type Expo struct {
 	Host       string
@@ -82,13 +84,26 @@ func NewExpoPushMessage() *ExpoPushMessage {
 	return message
 }
 
-func (expo *Expo) SendPushNotification(message *ExpoPushMessage) (response *ExpoPushResponse, err error) {
-	jsonPayload, err := json.Marshal(message)
+func ChunkPushNotifications(messages []*ExpoPushMessage) [][]*ExpoPushMessage {
+    chunks := [][]*ExpoPushMessage{}
+    chunk := []*ExpoPushMessage{}
 
-	if err != nil {
-		return nil, err
+    for _, v := range messages {
+    	chunk = append(chunk, v)
+
+        if len(chunk) >= PUSH_NOTIFICATION_CHUNK_LIMIT {
+        	chunks = append(chunks, chunk)
+        	chunk = []*ExpoPushMessage{}
+		}
+    }
+
+    if len(chunk) > 0 {
+		chunks = append(chunks, chunk)
 	}
+    return chunks
+}
 
+func send(expo *Expo, jsonPayload []byte) (*ExpoPushResponse, error) {
 	payload := bytes.NewBuffer(jsonPayload)
 
 	req, err := http.NewRequest("POST", expo.BaseAPIUrl+"/push/send", payload)
@@ -118,4 +133,24 @@ func (expo *Expo) SendPushNotification(message *ExpoPushMessage) (response *Expo
 	}
 
 	return &res.Data, nil
+}
+
+func (expo *Expo) SendPushNotifications(messages []*ExpoPushMessage) (response *ExpoPushResponse, err error) {
+    jsonPayload, err := json.Marshal(messages)
+
+    if err != nil {
+    	return nil, err
+	}
+
+	return send(expo, jsonPayload)
+}
+
+func (expo *Expo) SendPushNotification(message *ExpoPushMessage) (response *ExpoPushResponse, err error) {
+	jsonPayload, err := json.Marshal(message)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return send(expo, jsonPayload)
 }
