@@ -36,6 +36,8 @@ func main() {
 
 Also checkout the example file [here](./example/main.go)
 
+[API docs](https://godoc.org/github.com/adierkens/expo-server-sdk-go)
+
 ## TODO
 - Add more tests
 - Generate docs using godoc and publish to GH pages
