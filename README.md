@@ -19,6 +19,17 @@ func main() {
   m.Title = "" // The title of the notification
 
   response, err := client.SendPushNotification(m)
+  
+  
+  // Full API
+  
+  expo.NewExpo() // create a new client
+  expo.NewExpoPushMessage() // create a msg to push
+  expo.ChunkPushNotifications([]*ExpoPushMessage) // Chunk them into an array of batches
+  
+  
+  client.SendPushNotification(*ExpoPushMessage)     // Send a single message
+  client.SendPushNotifications([]*ExpoPushMessage)  // Send a batch of messages
 }
 
 ```
