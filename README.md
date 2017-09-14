@@ -38,6 +38,7 @@ Also checkout the example file [here](./example/main.go)
 
 ## TODO
 - Add more tests
+- Generate docs using godoc and publish to GH pages
 
 ## See Also
 - [exponent-server-sdk-node](https://github.com/expo/exponent-server-sdk-node)
