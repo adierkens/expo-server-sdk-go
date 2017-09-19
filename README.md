@@ -1,4 +1,4 @@
-# expo-server-sdk-go [![Build Status](https://travis-ci.org/adierkens/expo-server-sdk-go.svg?branch=master)](https://travis-ci.org/adierkens/expo-server-sdk-go) [![codecov](https://codecov.io/gh/adierkens/expo-server-sdk-go/branch/master/graph/badge.svg)](https://codecov.io/gh/adierkens/expo-server-sdk-go)
+# expo-server-sdk-go [![Build Status](https://travis-ci.org/adierkens/expo-server-sdk-go.svg?branch=master)](https://travis-ci.org/adierkens/expo-server-sdk-go) [![codecov](https://codecov.io/gh/adierkens/expo-server-sdk-go/branch/master/graph/badge.svg)](https://codecov.io/gh/adierkens/expo-server-sdk-go) [![GoDoc](https://godoc.org/github.com/adierkens/expo-server-sdk-go?status.svg)](https://godoc.org/github.com/adierkens/expo-server-sdk-go)
 
 Server side library for working with Expo using Go
 
@@ -40,7 +40,6 @@ Also checkout the example file [here](./example/main.go)
 
 ## TODO
 - Add more tests
-- Generate docs using godoc and publish to GH pages
 
 ## See Also
 - [exponent-server-sdk-node](https://github.com/expo/exponent-server-sdk-node)
